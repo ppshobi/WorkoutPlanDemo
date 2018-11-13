@@ -47,7 +47,8 @@
     @include('layouts.partials.header')
         <div class="my-3 my-md-5">
             <div class="container">
-               @yield('content')
+                @include('layouts.partials.alerts')
+                @yield('content')
             </div>
         </div>
     </div>
