@@ -25,7 +25,7 @@
                         </div>
                         <div class="col">Difficulty - {{ $plan->difficulty }}</div>
                         <div class="col-auto">
-                            <a href="{{ "/plans/$user->id" }}" class="btn btn-sm btn-secondary">Goto plan details</a>
+                            <a href="{{ "/plans/$plan->id" }}" class="btn btn-sm btn-secondary">Goto plan details</a>
                         </div>
                         <div class="col-auto">
                             <div class="item-action dropdown">

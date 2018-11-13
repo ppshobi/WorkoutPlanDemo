@@ -25,6 +25,16 @@ class PlanController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'difficulty' => 'required',
+        ]);
 
+        $plan = (new Plan)->fill($request->all());
+        $plan->save();
+
+        session()->flash('success', 'Plan Saved Successfully');
+        return redirect('plans');
     }
 }
