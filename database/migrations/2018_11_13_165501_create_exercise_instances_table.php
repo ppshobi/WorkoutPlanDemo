@@ -20,6 +20,9 @@ class CreateExerciseInstancesTable extends Migration
             $table->integer('duration');
             $table->integer('order');
             $table->timestamps();
+
+            $table->foreign('exercise_id')->references('id')->on('exercises');
+            $table->foreign('day_id')->references('id')->on('plans_days');
         });
     }
 

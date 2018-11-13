@@ -13,7 +13,7 @@ class CreateExerciseTable extends Migration
      */
     public function up()
     {
-        Schema::create('exercise', function (Blueprint $table) {
+        Schema::create('exercises', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
