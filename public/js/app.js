@@ -43408,6 +43408,8 @@ module.exports = function normalizeComponent (
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -43428,7 +43430,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
     props: ['exercises'],
 
     data: function data() {
@@ -43436,16 +43438,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             days: []
         };
     },
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    methods: {
+        closeModal: function closeModal() {}
     },
 
-    methods: {
-        addToDay: function addToDay() {
-            console.log("clicked");
-        }
+    mounted: function mounted() {
+        console.log('Exercise Component mounted.');
     }
-});
+}, 'methods', {
+    addToDay: function addToDay() {
+        console.log("clicked");
+    }
+}));
 
 /***/ }),
 /* 41 */
@@ -43457,29 +43461,43 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Example Component")
-          ]),
-          _vm._v(" "),
+      _c("div", { staticClass: "card card-default" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _vm._v("Example Component")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          _vm._l(_vm.exercises, function(exercise) {
+            return _c("ul", [
+              _c("li", [_vm._v(_vm._s(exercise.name))]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm btn-secondary",
+                  on: { click: _vm.addToDay }
+                },
+                [_vm._v("+")]
+              )
+            ])
+          })
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-footer" }, [
           _c(
-            "div",
-            { staticClass: "card-body" },
-            _vm._l(_vm.exercises, function(exercise) {
-              return _c("ul", [
-                _c("li", [_vm._v(_vm._s(exercise.name))]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-secondary",
-                    on: { click: _vm.addToDay }
-                  },
-                  [_vm._v("+")]
-                )
-              ])
-            })
+            "button",
+            {
+              staticClass: "btn-sm btn-primary",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.closeModel($event)
+                }
+              }
+            },
+            [_vm._v("Close")]
           )
         ])
       ])
@@ -43567,22 +43585,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['exercises'],
 
     data: function data() {
         return {
-            name: 'Day 1'
+            name: 'Day 1',
+            editing: false
         };
     },
     mounted: function mounted() {
         console.log('Day Component mounted.');
     },
 
-    methods: {}
+
+    methods: {
+        editName: function editName() {
+            this.editing = !this.editing;
+        }
+    },
+    watch: {
+        editing: function editing(val) {
+            if (val) {
+                console.log("Editing name");
+                $("#dayName").prop("disabled", false);
+            } else {
+                $("#dayName").prop("disabled", true);
+            }
+        }
+    }
 });
 
 /***/ }),
@@ -43595,55 +43627,60 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.name,
-                  expression: "name"
-                }
-              ],
-              attrs: { type: "text" },
-              domProps: { value: _vm.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.name = $event.target.value
-                }
+      _c("div", { staticClass: "card card-default" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name"
               }
-            })
-          ]),
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", id: "dayName", disabled: "" },
+            domProps: { value: _vm.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
+              }
+            }
+          }),
           _vm._v(" "),
           _c(
-            "div",
-            { staticClass: "card-body" },
-            _vm._l(this.exercises, function(exercise) {
-              return _c("ul", [
-                _c("li", [_vm._v(_vm._s(exercise.name))]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-secondary",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.remove($event)
-                      }
-                    }
-                  },
-                  [_vm._v(" - ")]
-                )
-              ])
-            })
+            "label",
+            { attrs: { for: "dayName" }, on: { click: _vm.editName } },
+            [_vm._v(_vm._s(this.editing ? "Save" : "Edit"))]
           )
-        ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          _vm._l(this.exercises, function(exercise) {
+            return _c("ul", [
+              _c("li", [_vm._v(_vm._s(exercise.name))]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm btn-secondary",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.remove($event)
+                    }
+                  }
+                },
+                [_vm._v(" - ")]
+              )
+            ])
+          })
+        )
       ])
     ])
   ])

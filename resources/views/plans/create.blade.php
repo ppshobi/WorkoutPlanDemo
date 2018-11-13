@@ -40,13 +40,12 @@
                             </label>
                         </div>
                     </div>
-                    <button class="btn btn-primary w-100" @click.prevent="addDay">Add a Day</button>
+                </div>
+                <div class="col-md-6">
                     <div v-for="day in this.days">
                         <day></day>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <exercise :exercises="{{ $exercises }}"></exercise>
+                    <button class="btn btn-primary w-100" @click.prevent="addDay">Add a Day</button>
                 </div>
             </div>
             <div class="card-footer">
