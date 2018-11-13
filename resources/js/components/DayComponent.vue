@@ -3,7 +3,8 @@
         <div class="row justify-content-center">
             <div class="card card-default">
                 <div class="card-header">
-                    <input type="text" id="dayName" v-model="name" class="form-control" disabled/> <label for="dayName" @click="editName">{{ this.editing ? "Save" : "Edit"}}</label>
+                    <input type="text" id="dayName" v-model="name" class="form-control" :disabled="! this.editing" />
+                    <label class="form-label" for="dayName" @click="editName"> <a class="btn" href="javascript:void(0)">{{ this.editing ? "Save" : "Edit"}}</a></label>
                 </div>
                 <div class="card-body">
                     <ul v-for="exercise in this.exercises">
@@ -23,7 +24,7 @@
         data: function() {
             return {
                 name : 'Day 1',
-                editing: false,
+                editing: true,
             }
         },
         mounted() {
@@ -36,14 +37,7 @@
             },
         },
         watch: {
-            editing: function(val){
-                if(val) {
-                    console.log("Editing name");
-                    $("#dayName").prop("disabled", false);
-                }else{
-                    $("#dayName").prop("disabled", true);
-                }
-            }
+
         }
     }
 </script>

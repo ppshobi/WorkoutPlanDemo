@@ -43585,6 +43585,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['exercises'],
@@ -43592,7 +43593,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             name: 'Day 1',
-            editing: false
+            editing: true
         };
     },
     mounted: function mounted() {
@@ -43605,16 +43606,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.editing = !this.editing;
         }
     },
-    watch: {
-        editing: function editing(val) {
-            if (val) {
-                console.log("Editing name");
-                $("#dayName").prop("disabled", false);
-            } else {
-                $("#dayName").prop("disabled", true);
-            }
-        }
-    }
+    watch: {}
 });
 
 /***/ }),
@@ -43639,7 +43631,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", id: "dayName", disabled: "" },
+            attrs: { type: "text", id: "dayName", disabled: !this.editing },
             domProps: { value: _vm.name },
             on: {
               input: function($event) {
@@ -43653,8 +43645,18 @@ var render = function() {
           _vm._v(" "),
           _c(
             "label",
-            { attrs: { for: "dayName" }, on: { click: _vm.editName } },
-            [_vm._v(_vm._s(this.editing ? "Save" : "Edit"))]
+            {
+              staticClass: "form-label",
+              attrs: { for: "dayName" },
+              on: { click: _vm.editName }
+            },
+            [
+              _c(
+                "a",
+                { staticClass: "btn", attrs: { href: "javascript:void(0)" } },
+                [_vm._v(_vm._s(this.editing ? "Save" : "Edit"))]
+              )
+            ]
           )
         ]),
         _vm._v(" "),
