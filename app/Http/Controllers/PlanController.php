@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exercise;
 use App\Plan;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,8 @@ class PlanController extends Controller
 
     public function create()
     {
-        return view('plans.create');
+        $exercises = Exercise::all();
+        return view('plans.create', compact('exercises'));
     }
 
     public function store(Request $request)

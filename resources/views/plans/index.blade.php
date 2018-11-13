@@ -47,7 +47,7 @@
             </ul>
         </div>
         <div class="card-footer">
-            <div class="btn btn-primary">Add Plan</div>
+            <a class="btn btn-primary" href="/plans/create">Create a plan</a>
         </div>
     </div>
 @endsection

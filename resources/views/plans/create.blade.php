@@ -9,10 +9,12 @@
         <div class="col-md-12 p-2">
             @include('layouts.partials.errors')
         </div>
+        <add-plan inline-template>
+
         <form action="/plans" method="post">
             @csrf
-            <div class="card-body o-auto">
-                <div class="col-md-6 col-lg-4">
+            <div class="card-body o-auto d-flex">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Plan Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Biceps workout plan..">
@@ -38,11 +40,19 @@
                             </label>
                         </div>
                     </div>
+                    <button class="btn btn-primary w-100" @click.prevent="addDay">Add a Day</button>
+                    <div v-for="day in this.days">
+                        <day></day>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <exercise :exercises="{{ $exercises }}"></exercise>
                 </div>
             </div>
             <div class="card-footer">
                 <button class="btn btn-primary" type="submit">Add Plan</button>
             </div>
         </form>
+        </add-plan>
     </div>
 @endsection

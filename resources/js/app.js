@@ -17,7 +17,10 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('exercise', require('./components/ExerciseComponent.vue'));
+Vue.component('day', require('./components/DayComponent.vue'));
+Vue.component('add-plan', require('./components/AddPlan.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 

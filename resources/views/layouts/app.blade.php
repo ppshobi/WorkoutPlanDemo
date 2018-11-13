@@ -43,7 +43,7 @@
 </head>
 <body class="">
 <div class="page">
-    <div class="page-main">
+    <div class="page-main" id="app">
     @include('layouts.partials.header')
         <div class="my-3 my-md-5">
             <div class="container">
