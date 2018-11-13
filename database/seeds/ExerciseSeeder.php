@@ -12,6 +12,9 @@ class ExerciseSeeder extends Seeder
      */
     public function run()
     {
+
+        Exercise::truncate();
+
         Exercise::insert([
             ['id' => 1, 'name' => 'Crunch'],
             ['id' => 2, 'name' => 'Air squat'],
