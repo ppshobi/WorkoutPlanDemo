@@ -77,6 +77,7 @@
 
         methods: {
             openModal(event){
+                $('input:checkbox[name=exercise]').prop('checked', false);
                 $(event.target).parents().eq(2).siblings().closest('.modal').modal()
             },
             saveExercises(event){

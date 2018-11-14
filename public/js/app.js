@@ -33276,6 +33276,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         openModal: function openModal(event) {
+            $('input:checkbox[name=exercise]').prop('checked', false);
             $(event.target).parents().eq(2).siblings().closest('.modal').modal();
         },
         saveExercises: function saveExercises(event) {
