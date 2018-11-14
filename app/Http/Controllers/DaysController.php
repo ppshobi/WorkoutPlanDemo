@@ -55,7 +55,10 @@ class DaysController extends Controller
      */
     public function destroy($id)
     {
-        Day::destroy([$id]);
+        $day = Day::find($id);
+        $day->exercises()->delete();
+        $day->delete();
+
         return response('Deleted Successfully', 200);
     }
 }
