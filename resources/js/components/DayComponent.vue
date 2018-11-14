@@ -127,6 +127,11 @@
                 this.dayExercises = this.dayExercises.filter(function(ex) {
                     return ex.id !== parseInt(id);
                 });
+
+                axios.delete(`/exercise-instance/${this.dayId}/${id}`)
+                    .then((response)=>{
+                        console.log(response.data);
+                    });
             },
 
             fetchExercises() {

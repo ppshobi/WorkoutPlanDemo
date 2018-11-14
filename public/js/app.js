@@ -33325,6 +33325,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dayExercises = this.dayExercises.filter(function (ex) {
                 return ex.id !== parseInt(id);
             });
+
+            axios.delete('/exercise-instance/' + this.dayId + '/' + id).then(function (response) {
+                console.log(response.data);
+            });
         },
         fetchExercises: function fetchExercises() {
             var _this2 = this;

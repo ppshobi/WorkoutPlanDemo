@@ -90,4 +90,9 @@ class ExerciseInstanceController extends Controller
     {
 
     }
+
+    public function delete($dayId, $exerciseId)
+    {
+        return ExerciseInstance::where('day_id', $dayId)->where('exercise_id', $exerciseId)->delete();
+    }
 }
