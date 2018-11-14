@@ -31,7 +31,7 @@ class ExerciseInstanceController extends Controller
                 'exercise_id' => $exercise['id'],
             ],[
                 'order' => 1,
-                'duration' => 300,
+                'duration' => $exercise['duration'],
             ]);
         }
     }

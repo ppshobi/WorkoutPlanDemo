@@ -37,7 +37,7 @@ class PlanController extends Controller
     {
         Plan::where('id', $planId)->update([
             'name'        => $request->name,
-            'description' => $request->description,
+            'description' => $request->description ?? '',
             'difficulty'  => $request->difficulty,
         ]);
     }

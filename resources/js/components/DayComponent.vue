@@ -13,6 +13,10 @@
                                 <div class="col">
                                     {{ exercise.name }}
                                 </div>
+                                <div class="col d-flex">
+                                    <label class="form-label align-self-center">Duration</label>
+                                    <input type="text" class="form-control-sm" @blur="persistExerciseInstance" placeholder="duration" v-model="exercise.duration">
+                                </div>
                                 <div class="col-auto">
                                     <a href="#" class="btn btn-sm btn-secondary" @click.prevent="remove(exercise.exercise_id)"><i class="fe fe-trash"></i></a>
                                 </div>
@@ -107,8 +111,9 @@
                 axios.post('/exercise-instance',{
                     exercises: this.dayExercises.map((ex) => {
                         return {
-                          id: ex.id,
-                          day_id: self.dayId,
+                            id: ex.id,
+                            duration:ex.duration,
+                            day_id: self.dayId,
                         }
                     }),
                 }).then((response) => {
