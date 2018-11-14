@@ -49,7 +49,7 @@
             <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                        <a href="/plans" class="nav-link active"><i class="fe fe-home"></i> Plan Overview</a>
                     </li>
                     <li class="nav-item">
                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Interface</a>

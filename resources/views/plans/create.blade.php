@@ -2,7 +2,7 @@
 @section('content')
     <div class="page-header">
         <h1 class="page-title">
-            Create A plan
+            {{ $title }}
         </h1>
     </div>
     <div class="card">

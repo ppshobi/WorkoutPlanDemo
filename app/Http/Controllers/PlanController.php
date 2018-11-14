@@ -17,20 +17,21 @@ class PlanController extends Controller
     public function show(Plan $plan)
     {
         $exercises = Exercise::all();
-        return view('plans.create', compact('exercises','plan'));
+        $title = "Workout plan details";
+        return view('plans.create', compact('exercises','plan', 'title'));
     }
 
     public function create()
     {
         $exercises = Exercise::all();
-
+        $title = "Create a new workout plan";
         $plan = Plan::create([
             'name' => 'Unnamed Plan',
             'description'=> '',
             'difficulty' => 1,
         ]);
 
-        return view('plans.create', compact('exercises','plan'));
+        return view('plans.create', compact('exercises','plan', 'title'));
     }
 
     public function update(Request $request, $planId)

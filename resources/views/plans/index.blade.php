@@ -7,7 +7,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Members</h3>
+            <h3 class="card-title">Current Plans</h3>
         </div>
         <div class="card-body o-auto" style="height: 30rem">
             <ul class="list-unstyled list-separated">
@@ -19,7 +19,7 @@
                             </div>
                             <div class="col">
                                 <div>
-                                    <a href="javascript:void(0)" class="text-inherit">{{ $plan->name .'\'s Plan' }}</a>
+                                    <a href="javascript:void(0)" class="text-inherit">{{ $plan->name }}</a>
                                 </div>
                                 <small class="d-block item-except text-sm text-muted h-1x">{{ $plan->description }}</small>
                             </div>
