@@ -35,7 +35,10 @@
             },
 
             fetchDays(){
-                axios.get('/days').then((response)=>{
+                axios.get('/days', { params: {
+                        plan_id:this.plan.id
+                    }
+                }).then((response)=>{
                     this.days = response.data;
                     console.log("fetched days");
                 });

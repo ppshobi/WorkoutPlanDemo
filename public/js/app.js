@@ -33670,7 +33670,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchDays: function fetchDays() {
             var _this = this;
 
-            axios.get('/days').then(function (response) {
+            axios.get('/days', { params: {
+                    plan_id: this.plan.id
+                }
+            }).then(function (response) {
                 _this.days = response.data;
                 console.log("fetched days");
             });

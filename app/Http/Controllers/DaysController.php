@@ -14,7 +14,7 @@ class DaysController extends Controller
      */
     public function index(Request $request)
     {
-        return Day::where('plan_id', $request->plan)->get();
+        return Day::where('plan_id', $request->plan_id)->get();
     }
 
     /**
