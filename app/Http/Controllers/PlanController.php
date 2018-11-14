@@ -22,7 +22,14 @@ class PlanController extends Controller
     public function create()
     {
         $exercises = Exercise::all();
-        return view('plans.create', compact('exercises'));
+
+        $plan = Plan::create([
+            'name' => 'Unnamed Plan',
+            'description'=> '',
+            'difficulty' => 1,
+        ]);
+
+        return view('plans.create', compact('exercises','plan'));
     }
 
     public function store(Request $request)

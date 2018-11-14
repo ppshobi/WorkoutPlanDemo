@@ -9,7 +9,7 @@
         <div class="col-md-12 p-2">
             @include('layouts.partials.errors')
         </div>
-        <add-plan inline-template>
+        <add-plan :plan="{{ $plan }}" inline-template>
 
         <form action="/plans" method="post">
             @csrf
@@ -17,7 +17,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Plan Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Biceps workout plan..">
+                        <input type="text" :value="plan.name" class="form-control" name="name" placeholder="Biceps workout plan.." @blur>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Plan Description</label>

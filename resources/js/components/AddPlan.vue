@@ -1,5 +1,6 @@
 <script>
     export default {
+        props: ['plan'],
         data: function() {
             return {
                 dayCount: 1

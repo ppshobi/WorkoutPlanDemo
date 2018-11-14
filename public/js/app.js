@@ -33280,6 +33280,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         editName: function editName() {
             this.editing = !this.editing;
         },
+        removeDay: function removeDay() {},
         openModal: function openModal(event) {
             $(event.target).parents().eq(2).siblings().closest('.modal').modal();
         },
@@ -33355,9 +33356,17 @@ var render = function() {
             },
             [
               _c(
-                "a",
-                { staticClass: "btn", attrs: { href: "javascript:void(0)" } },
-                [_vm._v(_vm._s(this.editing ? "Save" : "Edit"))]
+                "button",
+                {
+                  staticClass: "btn btn-sm text-red",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.$emit("removeDay")
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fe fe-trash" }), _vm._v(" Delete")]
               )
             ]
           )
@@ -33598,6 +33607,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['plan'],
     data: function data() {
         return {
             dayCount: 1
