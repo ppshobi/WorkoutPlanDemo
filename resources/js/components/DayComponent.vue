@@ -14,7 +14,7 @@
                                     {{ exercise.name }}
                                 </div>
                                 <div class="col-auto">
-                                    <a href="#" class="btn btn-sm btn-secondary" @click.prevent="remove(exercise.id)"><i   class="fe fe-trash"></i></a>
+                                    <a href="#" class="btn btn-sm btn-secondary" @click.prevent="remove(exercise.exercise_id)"><i class="fe fe-trash"></i></a>
                                 </div>
                             </div>
                         </li>
@@ -58,7 +58,7 @@
 
 <script>
     export default {
-        props : ['exercises', 'day'],
+        props : ['day'],
 
         data: function() {
             return {
@@ -70,7 +70,7 @@
             }
         },
         mounted() {
-            this.dayExercises = this.exercises;
+            this.dayExercises = this.day.exercises;
             console.log('Day Component mounted.');
             this.fetchExercises();
         },
@@ -125,7 +125,7 @@
 
             remove(id) {
                 this.dayExercises = this.dayExercises.filter(function(ex) {
-                    return ex.id !== parseInt(id);
+                    return ex.exercise_id !== parseInt(id);
                 });
 
                 axios.delete(`/exercise-instance/${this.dayId}/${id}`)
