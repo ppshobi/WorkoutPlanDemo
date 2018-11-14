@@ -14,4 +14,9 @@ class Day extends Model
     {
         return $this->belongsTo(Plan::class);
     }
+
+    public function exercises()
+    {
+        return $this->hasManyThrough(Exercise::class, ExerciseInstance::class);
+    }
 }

@@ -9,7 +9,7 @@
         <div class="col-md-12 p-2">
             @include('layouts.partials.errors')
         </div>
-        <add-plan :plan="{{ $plan }}" inline-template>
+        <add-plan :plan="{{ $plan }}" inline-template @removeDay="removeDay">
 
         <form action="/plans" method="post">
             @csrf

@@ -15,6 +15,7 @@ class CreatePlansDaysTable extends Migration
     {
         Schema::create('plans_days', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->unsignedInteger('plan_id');
             $table->integer('order');
             $table->timestamps();

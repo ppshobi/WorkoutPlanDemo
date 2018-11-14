@@ -33259,11 +33259,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['exercises', 'dayCount'],
+    props: ['exercises', 'day'],
 
     data: function data() {
         return {
-            name: 'Day ' + this.dayCount,
+            name: this.day.name,
             editing: true,
             allExercises: [],
             dayExercises: []
@@ -33277,10 +33277,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     methods: {
-        editName: function editName() {
-            this.editing = !this.editing;
-        },
-        removeDay: function removeDay() {},
         openModal: function openModal(event) {
             $(event.target).parents().eq(2).siblings().closest('.modal').modal();
         },
@@ -33335,7 +33331,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", id: "dayName", disabled: !this.editing },
+            attrs: { type: "text", id: "dayName" },
             domProps: { value: _vm.name },
             on: {
               input: function($event) {
@@ -33362,7 +33358,7 @@ var render = function() {
                   on: {
                     click: function($event) {
                       $event.preventDefault()
-                      _vm.$emit("removeDay", this.dayId)
+                      _vm.$emit("removeDay", this.day.id)
                     }
                   }
                 },
@@ -33634,6 +33630,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log("created day");
             });
         },
+        removeDay: function removeDay(dayID) {},
         fetchDays: function fetchDays() {
             var _this = this;
 

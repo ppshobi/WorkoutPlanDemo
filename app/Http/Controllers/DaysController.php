@@ -37,6 +37,7 @@ class DaysController extends Controller
     {
         return Day::create([
             'plan_id' => $request->plan_id,
+            'name' => 'Day ' . (Day::where('plan_id', $request->plan_id)->count() + 1),
             'order' => 1,
         ]);
     }

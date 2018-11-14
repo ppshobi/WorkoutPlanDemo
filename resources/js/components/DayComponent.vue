@@ -3,8 +3,8 @@
         <div class="row justify-content-center">
             <div class="card card-default">
                 <div class="card-header">
-                    <input type="text" id="dayName" v-model="name" class="form-control" :disabled="! this.editing" />
-                    <label class="form-label" for="dayName" @click="editName"> <button class="btn btn-sm text-red" @click.prevent="$emit('removeDay', this.dayId)"><i class="fe fe-trash"></i> Delete</button></label>
+                    <input type="text" id="dayName" v-model="name" class="form-control" />
+                    <label class="form-label" for="dayName" @click="editName"> <button class="btn btn-sm text-red" @click.prevent="$emit('removeDay', this.day.id)"><i class="fe fe-trash"></i> Delete</button></label>
                 </div>
                 <div class="card-body o-auto">
                     <ul class="list-unstyled list-separated">
@@ -58,11 +58,11 @@
 
 <script>
     export default {
-        props : ['exercises', 'dayCount'],
+        props : ['exercises', 'day'],
 
         data: function() {
             return {
-                name : 'Day '+ this.dayCount,
+                name : this.day.name,
                 editing: true,
                 allExercises: [],
                 dayExercises: []
@@ -75,13 +75,6 @@
         },
 
         methods: {
-            editName(){
-               this.editing = ! this.editing;
-            },
-
-            removeDay(){
-
-            },
             openModal(event){
                 $(event.target).parents().eq(2).siblings().closest('.modal').modal()
             },

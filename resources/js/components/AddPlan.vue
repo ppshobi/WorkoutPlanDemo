@@ -24,6 +24,11 @@
                     console.log("created day");
                 });
             },
+
+            removeDay(dayID){
+
+            },
+
             fetchDays(){
                 axios.get('/days').then((response)=>{
                     this.days = response.data;
