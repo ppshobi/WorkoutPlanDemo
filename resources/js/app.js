@@ -22,7 +22,7 @@ window.Vue = require('vue');
 
 Vue.component('exercise', require('./components/ExerciseComponent.vue'));
 Vue.component('day', require('./components/DayComponent.vue'));
-Vue.component('add-plan', require('./components/AddPlan.vue'));
+Vue.component('plan', require('./components/PlanComponent.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 

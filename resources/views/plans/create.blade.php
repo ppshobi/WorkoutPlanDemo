@@ -9,7 +9,7 @@
         <div class="col-md-12 p-2">
             @include('layouts.partials.errors')
         </div>
-        <add-plan :plan="{{ $plan }}" inline-template>
+        <plan :plan="{{ $plan }}" inline-template>
             <div>
             <div class="card-body o-auto d-flex">
                 <div class="col-md-6">
@@ -50,6 +50,6 @@
                 {{--<button class="btn btn-primary" type="submit">Go Back</button>--}}
             </div>
         </div>
-        </add-plan>
+        </plan>
     </div>
 @endsection
