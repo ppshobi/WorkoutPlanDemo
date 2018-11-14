@@ -43618,6 +43618,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['exercises'],
@@ -43716,29 +43724,42 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "card-body" },
-          _vm._l(this.dayExercises, function(exercise) {
-            return _c("ul", [
-              _c("li", [_vm._v(_vm._s(exercise.name))]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm btn-secondary",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.remove($event)
-                    }
-                  }
-                },
-                [_vm._v(" - ")]
-              )
-            ])
-          })
-        ),
+        _c("div", { staticClass: "card-body o-auto" }, [
+          _c(
+            "ul",
+            { staticClass: "list-unstyled list-separated" },
+            _vm._l(this.dayExercises, function(exercise) {
+              return _c("li", { staticClass: "list-separated-item p-1" }, [
+                _c("div", { staticClass: "row align-items-center" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(exercise.name) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-auto" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-sm btn-secondary",
+                        attrs: { href: "" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.remove($event)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fe fe-trash" })]
+                    )
+                  ])
+                ])
+              ])
+            })
+          )
+        ]),
         _vm._v(" "),
         _vm._m(0)
       ])

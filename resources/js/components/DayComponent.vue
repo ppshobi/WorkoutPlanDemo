@@ -6,10 +6,18 @@
                     <input type="text" id="dayName" v-model="name" class="form-control" :disabled="! this.editing" />
                     <label class="form-label" for="dayName" @click="editName"> <a class="btn" href="javascript:void(0)">{{ this.editing ? "Save" : "Edit"}}</a></label>
                 </div>
-                <div class="card-body">
-                    <ul v-for="exercise in this.dayExercises">
-                        <li>{{ exercise.name }}</li>
-                        <button class="btn btn-sm btn-secondary" @click.prevent="remove"> - </button>
+                <div class="card-body o-auto">
+                    <ul class="list-unstyled list-separated">
+                        <li class="list-separated-item p-1" v-for="exercise in this.dayExercises">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    {{ exercise.name }}
+                                </div>
+                                <div class="col-auto">
+                                    <a href="" class="btn btn-sm btn-secondary" @click.prevent="remove"><i class="fe fe-trash"></i></a>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-footer">

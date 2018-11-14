@@ -13,34 +13,34 @@
             <ul class="list-unstyled list-separated">
                 @forelse($plans as $plan)
                     <li class="list-separated-item">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="avatar avatar-md d-block" style="background-image: url('images/user.jpg')"></span>
-                        </div>
-                        <div class="col">
-                            <div>
-                                <a href="javascript:void(0)" class="text-inherit">{{ $plan->name .'\'s Plan' }}</a>
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <span class="avatar avatar-md d-block" style="background-image: url('/images/user.jpg')"></span>
                             </div>
-                            <small class="d-block item-except text-sm text-muted h-1x">{{ $plan->description }}</small>
-                        </div>
-                        <div class="col">Difficulty - {{ $plan->difficulty }}</div>
-                        <div class="col-auto">
-                            <a href="{{ "/plans/$plan->id" }}" class="btn btn-sm btn-secondary">Goto plan details</a>
-                        </div>
-                        <div class="col-auto">
-                            <div class="item-action dropdown">
-                                <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-tag"></i> Action </a>
-                                    <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-edit-2"></i> Another action </a>
-                                    <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-message-square"></i> Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-link"></i> Separated link</a>
+                            <div class="col">
+                                <div>
+                                    <a href="javascript:void(0)" class="text-inherit">{{ $plan->name .'\'s Plan' }}</a>
+                                </div>
+                                <small class="d-block item-except text-sm text-muted h-1x">{{ $plan->description }}</small>
+                            </div>
+                            <div class="col">Difficulty - {{ $plan->difficulty }}</div>
+                            <div class="col-auto">
+                                <a href="{{ "/plans/$plan->id" }}" class="btn btn-sm btn-secondary">Goto plan details</a>
+                            </div>
+                            <div class="col-auto">
+                                <div class="item-action dropdown">
+                                    <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-tag"></i> Action </a>
+                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-edit-2"></i> Another action </a>
+                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-message-square"></i> Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-link"></i> Separated link</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
                 @empty
                     <li>Ooops.. No plans yet, Create one using the button</li>
                 @endforelse
