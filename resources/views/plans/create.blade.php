@@ -42,9 +42,8 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div v-for="day in this.days">
-                        <day></day>
-                    </div>
+                    <day></day>
+                    <day></day>
                     <button class="btn btn-primary w-100" @click.prevent="addDay">Add a Day</button>
                 </div>
             </div>

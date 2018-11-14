@@ -1,12 +1,8 @@
 <script>
-    import Day from './DayComponent.vue';
     export default {
-        components: {
-            Day
-        },
         data: function() {
             return {
-                days: [Day]
+                dayCount: 1
             }
         },
         mounted() {
@@ -14,7 +10,7 @@
         },
         methods: {
             addDay() {
-                this.days.push(Day);
+                this.dayCount++;
             },
         }
     }

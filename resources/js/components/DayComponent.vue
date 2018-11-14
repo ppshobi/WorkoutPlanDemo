@@ -14,20 +14,19 @@
                                     {{ exercise.name }}
                                 </div>
                                 <div class="col-auto">
-                                    <a href="" :data-exercise-id="exercise.id" class="btn btn-sm btn-secondary" @click.prevent="remove"><i class="fe fe-trash"></i></a>
+                                    <a href="#" class="btn btn-sm btn-secondary" @click.prevent="remove(exercise.id)"><i   class="fe fe-trash"></i></a>
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <div data-toggle="modal" data-target="#exerciseModel" class="btn btn-sm btn-primary">Add an Exercise</div>
+                    <a href="" class="btn btn-sm btn-primary" @click.prevent="openModal">Add an Exercise</a>
                 </div>
             </div>
         </div>
-
         <!-- Modal -->
-        <div class="modal fade" id="exerciseModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -49,7 +48,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" @click="saveExercises">Add to Day</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" @click="saveExercises">Add to Day</button>
                     </div>
                 </div>
             </div>
@@ -79,6 +78,9 @@
             editName(){
                this.editing = ! this.editing;
             },
+            openModal(event){
+                $(event.target).parents().eq(2).siblings().closest('.modal').modal()
+            },
             saveExercises(event){
                 self = this;
                 let temporaryExercises = [];
@@ -94,9 +96,9 @@
 
             },
 
-            remove(event) {
-                this.dayExercises = this.dayExercises.filter((ex) => {
-                    return ex.id !== parseInt($(event.target).parent().data('exercise-id'))
+            remove(id) {
+                this.dayExercises = this.dayExercises.filter(function(ex) {
+                    return ex.id !== parseInt(id);
                 });
             },
 
