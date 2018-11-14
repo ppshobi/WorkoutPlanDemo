@@ -17,6 +17,6 @@ class Day extends Model
 
     public function exercises()
     {
-        return $this->hasManyThrough(Exercise::class, ExerciseInstance::class);
+        return $this->hasMany(ExerciseInstance::class);
     }
 }
