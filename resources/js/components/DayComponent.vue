@@ -98,6 +98,22 @@
 
                 this.dayExercises = _.unionBy(temporaryExercises, this.dayExercises, 'id');
 
+                this.persistExerciseInstance();
+            },
+
+            persistExerciseInstance() {
+                let self = this;
+
+                axios.post('/exercise-instance',{
+                    exercises: this.dayExercises.map((ex) => {
+                        return {
+                          id: ex.id,
+                          day_id: self.dayId,
+                        }
+                    }),
+                }).then((response) => {
+                    console.log(response.body);
+                });
             },
 
             deleteDay(){

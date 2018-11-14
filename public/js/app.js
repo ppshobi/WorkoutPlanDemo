@@ -33296,6 +33296,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
 
             this.dayExercises = _.unionBy(temporaryExercises, this.dayExercises, 'id');
+
+            this.persistExerciseInstance();
+        },
+        persistExerciseInstance: function persistExerciseInstance() {
+            var self = this;
+
+            axios.post('/exercise-instance', {
+                exercises: this.dayExercises.map(function (ex) {
+                    return {
+                        id: ex.id,
+                        day_id: self.dayId
+                    };
+                })
+            }).then(function (response) {
+                console.log(response.body);
+            });
         },
         deleteDay: function deleteDay() {
             var _this = this;

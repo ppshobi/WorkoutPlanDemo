@@ -26,3 +26,4 @@ Route::get('/plans/{plan}', 'PlanController@show')->name('plans.show');
 
 Route::resource('exercise', 'ExerciseController');
 Route::resource('days', 'DaysController');
+Route::resource('exercise-instance', 'ExerciseInstanceController');
