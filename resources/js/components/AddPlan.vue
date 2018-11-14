@@ -26,6 +26,7 @@
             },
 
             removeDay(dayId){
+                console.log("came here");
                 self = this;
                 axios.delete('/days/'+dayId).then((response)=>{
                     self.days = self.days.filter(function(day) {

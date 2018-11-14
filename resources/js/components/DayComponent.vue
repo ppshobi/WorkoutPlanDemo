@@ -4,7 +4,7 @@
             <div class="card card-default">
                 <div class="card-header">
                     <input type="text" id="dayName" v-model="name" class="form-control" />
-                    <label class="form-label" for="dayName" @click="editName"> <button class="btn btn-sm text-red" @click.prevent="$emit('removeDay', this.day.id)"><i class="fe fe-trash"></i> Delete</button></label>
+                    <label class="form-label" for="dayName"> <button class="btn btn-sm text-red" @click.prevent="deleteDay()"><i class="fe fe-trash"></i> Delete</button></label>
                 </div>
                 <div class="card-body o-auto">
                     <ul class="list-unstyled list-separated">
@@ -63,6 +63,7 @@
         data: function() {
             return {
                 name : this.day.name,
+                dayId: this.day.id,
                 editing: true,
                 allExercises: [],
                 dayExercises: []
@@ -91,6 +92,10 @@
 
                 this.dayExercises = _.unionBy(temporaryExercises, this.dayExercises, 'id');
 
+            },
+
+            deleteDay(){
+                this.$emit('remove-day', this.day.id)
             },
 
             remove(id) {

@@ -9,7 +9,7 @@
         <div class="col-md-12 p-2">
             @include('layouts.partials.errors')
         </div>
-        <add-plan :plan="{{ $plan }}" inline-template @removeDay="removeDay()">
+        <add-plan :plan="{{ $plan }}" inline-template>
 
         <form action="/plans" method="post">
             @csrf
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-md-6">
                     <div v-for="day in days">
-                        <day :day="day"></day>
+                        <day :day="day" @remove-day="removeDay"></day>
                     </div>
                     <button class="btn btn-primary w-100" @click.prevent="addDay">Add a Day</button>
                 </div>
