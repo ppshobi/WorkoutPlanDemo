@@ -17,7 +17,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Plan Name</label>
-                        <input type="text" :value="plan.name" class="form-control" name="name" placeholder="Biceps workout plan.." @blur>
+                        <input type="text" :value="plan.name" class="form-control" name="name" placeholder="Biceps workout plan..">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Plan Description</label>
@@ -42,8 +42,8 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div v-for="range in dayCount">
-                        <day :day-count="range"></day>
+                    <div v-for="day in days">
+                        <day :day="day"></day>
                     </div>
                     <button class="btn btn-primary w-100" @click.prevent="addDay">Add a Day</button>
                 </div>

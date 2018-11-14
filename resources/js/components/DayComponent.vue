@@ -4,7 +4,7 @@
             <div class="card card-default">
                 <div class="card-header">
                     <input type="text" id="dayName" v-model="name" class="form-control" :disabled="! this.editing" />
-                    <label class="form-label" for="dayName" @click="editName"> <button class="btn btn-sm text-red" @click.prevent="$emit('removeDay')"><i class="fe fe-trash"></i> Delete</button></label>
+                    <label class="form-label" for="dayName" @click="editName"> <button class="btn btn-sm text-red" @click.prevent="$emit('removeDay', this.dayId)"><i class="fe fe-trash"></i> Delete</button></label>
                 </div>
                 <div class="card-body o-auto">
                     <ul class="list-unstyled list-separated">

@@ -33362,7 +33362,7 @@ var render = function() {
                   on: {
                     click: function($event) {
                       $event.preventDefault()
-                      _vm.$emit("removeDay")
+                      _vm.$emit("removeDay", this.dayId)
                     }
                   }
                 },
@@ -33605,21 +33605,42 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__DayComponent_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__DayComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__DayComponent_vue__);
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['plan'],
+    components: {
+        Day: __WEBPACK_IMPORTED_MODULE_0__DayComponent_vue___default.a
+    },
     data: function data() {
         return {
-            dayCount: 1
+            days: []
         };
     },
     mounted: function mounted() {
         console.log('Add plan Component mounted.');
+        this.fetchDays(this.plan.id);
     },
 
     methods: {
         addDay: function addDay() {
-            this.dayCount++;
+            self = this;
+            axios.post('/days', {
+                'plan_id': this.plan.id
+            }).then(function (response) {
+                self.days.push(response.data);
+                console.log("created day");
+            });
+        },
+        fetchDays: function fetchDays() {
+            var _this = this;
+
+            axios.get('/days').then(function (response) {
+                _this.days = response.data;
+                console.log("fetched days");
+            });
         }
     }
 });

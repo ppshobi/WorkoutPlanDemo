@@ -16,7 +16,8 @@ class PlanController extends Controller
 
     public function show(Plan $plan)
     {
-        dd($plan);
+        $exercises = Exercise::all();
+        return view('plans.create', compact('exercises','plan'));
     }
 
     public function create()

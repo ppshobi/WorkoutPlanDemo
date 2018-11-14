@@ -25,3 +25,4 @@ Route::post('/plans', 'PlanController@store')->name('plans.store');
 Route::get('/plans/{plan}', 'PlanController@show')->name('plans.show');
 
 Route::resource('exercise', 'ExerciseController');
+Route::resource('days', 'DaysController');
