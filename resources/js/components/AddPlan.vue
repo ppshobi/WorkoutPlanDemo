@@ -7,7 +7,10 @@
         },
         data: function() {
             return {
-                days: []
+                days: [],
+                difficulty: this.plan.difficulty,
+                name: this.plan.name,
+                description: this.plan.description
             }
         },
         mounted() {
@@ -35,6 +38,16 @@
                 axios.get('/days').then((response)=>{
                     this.days = response.data;
                     console.log("fetched days");
+                });
+            },
+
+            updatePlan() {
+                axios.patch(`/plans/${this.plan.id}`,{
+                    name: this.name,
+                    description: this.description,
+                    difficulty: this.difficulty,
+                }).then((response) => {
+                    console.log(response.data)
                 });
             }
 

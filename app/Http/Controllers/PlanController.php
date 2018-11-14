@@ -33,18 +33,12 @@ class PlanController extends Controller
         return view('plans.create', compact('exercises','plan'));
     }
 
-    public function store(Request $request)
+    public function update(Request $request, $planId)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'difficulty' => 'required',
+        Plan::where('id', $planId)->update([
+            'name'        => $request->name,
+            'description' => $request->description,
+            'difficulty'  => $request->difficulty,
         ]);
-
-        $plan = (new Plan)->fill($request->all());
-        $plan->save();
-
-        session()->flash('success', 'Plan Saved Successfully');
-        return redirect('plans');
     }
 }

@@ -33641,7 +33641,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            days: []
+            days: [],
+            difficulty: this.plan.difficulty,
+            name: this.plan.name,
+            description: this.plan.description
         };
     },
     mounted: function mounted() {
@@ -33670,6 +33673,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/days').then(function (response) {
                 _this.days = response.data;
                 console.log("fetched days");
+            });
+        },
+        updatePlan: function updatePlan() {
+            axios.patch('/plans/' + this.plan.id, {
+                name: this.name,
+                description: this.description,
+                difficulty: this.difficulty
+            }).then(function (response) {
+                console.log(response.data);
             });
         }
     }
