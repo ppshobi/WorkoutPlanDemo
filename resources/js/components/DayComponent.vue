@@ -8,13 +8,13 @@
                 </div>
                 <div class="card-body o-auto">
                     <ul class="list-unstyled list-separated">
-                        <li class="list-separated-item p-1" v-for="exercise in this.dayExercises">
+                        <li class="list-separated-item " v-for="exercise in this.dayExercises">
                             <div class="row align-items-center">
                                 <div class="col">
                                     {{ exercise.name }}
                                 </div>
                                 <div class="col-auto">
-                                    <a href="" class="btn btn-sm btn-secondary" @click.prevent="remove"><i class="fe fe-trash"></i></a>
+                                    <a href="" :data-exercise-id="exercise.id" class="btn btn-sm btn-secondary" @click.prevent="remove"><i class="fe fe-trash"></i></a>
                                 </div>
                             </div>
                         </li>
@@ -93,6 +93,13 @@
                 this.dayExercises = _.unionBy(temporaryExercises, this.dayExercises, 'id');
 
             },
+
+            remove(event) {
+                this.dayExercises = this.dayExercises.filter((ex) => {
+                    return ex.id !== parseInt($(event.target).parent().data('exercise-id'))
+                });
+            },
+
             fetchExercises() {
                 axios.get('/exercise').then((response)=>{
                    this.allExercises = response.data;

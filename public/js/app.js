@@ -43662,6 +43662,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.dayExercises = _.unionBy(temporaryExercises, this.dayExercises, 'id');
         },
+        remove: function remove(event) {
+            this.dayExercises = this.dayExercises.filter(function (ex) {
+                return ex.id !== parseInt($(event.target).parent().data('exercise-id'));
+            });
+        },
         fetchExercises: function fetchExercises() {
             var _this = this;
 
@@ -43729,7 +43734,7 @@ var render = function() {
             "ul",
             { staticClass: "list-unstyled list-separated" },
             _vm._l(this.dayExercises, function(exercise) {
-              return _c("li", { staticClass: "list-separated-item p-1" }, [
+              return _c("li", { staticClass: "list-separated-item " }, [
                 _c("div", { staticClass: "row align-items-center" }, [
                   _c("div", { staticClass: "col" }, [
                     _vm._v(
@@ -43744,7 +43749,7 @@ var render = function() {
                       "a",
                       {
                         staticClass: "btn btn-sm btn-secondary",
-                        attrs: { href: "" },
+                        attrs: { href: "", "data-exercise-id": exercise.id },
                         on: {
                           click: function($event) {
                             $event.preventDefault()
