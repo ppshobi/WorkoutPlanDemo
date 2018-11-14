@@ -23,3 +23,5 @@ Route::get('/plans', 'PlanController@index')->name('plans');
 Route::get('/plans/create', 'PlanController@create')->name('plans.create');
 Route::post('/plans', 'PlanController@store')->name('plans.store');
 Route::get('/plans/{plan}', 'PlanController@show')->name('plans.show');
+
+Route::resource('exercise', 'ExerciseController');
