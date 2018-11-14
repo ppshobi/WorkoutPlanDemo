@@ -25,8 +25,13 @@
                 });
             },
 
-            removeDay(dayID){
-
+            removeDay(dayId){
+                self = this;
+                axios.delete('/days/'+dayId).then((response)=>{
+                    self.days = self.days.filter(function(day) {
+                        return day.id !== dayId;
+                    });
+                });
             },
 
             fetchDays(){

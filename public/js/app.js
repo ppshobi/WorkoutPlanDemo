@@ -33630,12 +33630,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log("created day");
             });
         },
-        removeDay: function removeDay(dayID) {},
-        fetchDays: function fetchDays() {
+        removeDay: function removeDay(dayID) {
             var _this = this;
 
+            axios.delete('/days/' + dayID).then(function (response) {
+                _this.days = _this.days.filter(function (ex) {
+                    return ex.id !== parseInt(id);
+                });
+            });
+        },
+        fetchDays: function fetchDays() {
+            var _this2 = this;
+
             axios.get('/days').then(function (response) {
-                _this.days = response.data;
+                _this2.days = response.data;
                 console.log("fetched days");
             });
         }
