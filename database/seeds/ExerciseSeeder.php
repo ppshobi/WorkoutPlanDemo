@@ -16,13 +16,13 @@ class ExerciseSeeder extends Seeder
         Exercise::truncate();
 
         Exercise::insert([
-            ['id' => 1, 'name' => 'Crunch'],
-            ['id' => 2, 'name' => 'Air squat'],
-            ['id' => 3, 'name' => 'Windmill'],
-            ['id' => 4, 'name' => 'Push-up'],
-            ['id' => 5, 'name' => 'Rowing Machine'],
-            ['id' => 6, 'name' => 'Walking'],
-            ['id' => 7, 'name' => 'Running'],
+            ['id' => 1, 'name' => 'Crunch', 'duration' => 150],
+            ['id' => 2, 'name' => 'Air squat', 'duration' => 150],
+            ['id' => 3, 'name' => 'Windmill', 'duration' => 150],
+            ['id' => 4, 'name' => 'Push-up', 'duration' => 150],
+            ['id' => 5, 'name' => 'Rowing Machine', 'duration' => 150],
+            ['id' => 6, 'name' => 'Walking', 'duration' => 150],
+            ['id' => 7, 'name' => 'Running', 'duration' => 150],
         ]);
     }
 }
