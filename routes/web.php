@@ -29,3 +29,4 @@ Route::resource('exercise', 'ExerciseController');
 Route::resource('days', 'DaysController');
 Route::resource('exercise-instance', 'ExerciseInstanceController');
 Route::delete('exercise-instance/{day_id}/{exercise_id}', 'ExerciseInstanceController@delete');
+Route::resource('users', 'UserController');
