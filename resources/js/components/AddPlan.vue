@@ -26,12 +26,8 @@
             },
 
             removeDay(dayId){
-                console.log("came here");
-                self = this;
-                axios.delete('/days/'+dayId).then((response)=>{
-                    self.days = self.days.filter(function(day) {
-                        return day.id !== dayId;
-                    });
+                this.days = this.days.filter(function(day) {
+                    return day.id !== dayId;
                 });
             },
 

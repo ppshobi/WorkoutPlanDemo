@@ -3,8 +3,8 @@
         <div class="row justify-content-center">
             <div class="card card-default">
                 <div class="card-header">
-                    <input type="text" id="dayName" v-model="name" class="form-control" />
-                    <label class="form-label" for="dayName"> <button class="btn btn-sm text-red" @click.prevent="deleteDay()"><i class="fe fe-trash"></i> Delete</button></label>
+                    <input type="text" id="dayName" @blur="updateDayName" v-model="name" class="form-control" />
+                    <label class="form-label" for="dayName"> <a class="btn btn-sm text-red" @click.prevent="deleteDay()"><i class="fe fe-trash"></i> Delete</a></label>
                 </div>
                 <div class="card-body o-auto">
                     <ul class="list-unstyled list-separated">
@@ -80,6 +80,11 @@
                 $('input:checkbox[name=exercise]').prop('checked', false);
                 $(event.target).parents().eq(2).siblings().closest('.modal').modal()
             },
+            updateDayName(){
+                axios.patch('/days/'+this.dayId, {name:this.name}).then((response) => {
+                    console.log("Name Updated Successfully");
+                });
+            },
             saveExercises(event){
                 self = this;
                 let temporaryExercises = [];
@@ -96,7 +101,10 @@
             },
 
             deleteDay(){
-                this.$emit('remove-day', this.day.id)
+                let self=this;
+                axios.delete('/days/'+this.dayId).then((response)=>{
+                    this.$emit('remove-day', self.dayId)
+                });
             },
 
             remove(id) {

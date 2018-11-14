@@ -33279,6 +33279,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('input:checkbox[name=exercise]').prop('checked', false);
             $(event.target).parents().eq(2).siblings().closest('.modal').modal();
         },
+        updateDayName: function updateDayName() {
+            axios.patch('/days/' + this.dayId, { name: this.name }).then(function (response) {
+                console.log("Name Updated Successfully");
+            });
+        },
         saveExercises: function saveExercises(event) {
             self = this;
             var temporaryExercises = [];
@@ -33293,7 +33298,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dayExercises = _.unionBy(temporaryExercises, this.dayExercises, 'id');
         },
         deleteDay: function deleteDay() {
-            this.$emit('remove-day', this.day.id);
+            var _this = this;
+
+            var self = this;
+            axios.delete('/days/' + this.dayId).then(function (response) {
+                _this.$emit('remove-day', self.dayId);
+            });
         },
         remove: function remove(id) {
             this.dayExercises = this.dayExercises.filter(function (ex) {
@@ -33301,10 +33311,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         fetchExercises: function fetchExercises() {
-            var _this = this;
+            var _this2 = this;
 
             axios.get('/exercise').then(function (response) {
-                _this.allExercises = response.data;
+                _this2.allExercises = response.data;
             });
         }
     },
@@ -33336,6 +33346,7 @@ var render = function() {
             attrs: { type: "text", id: "dayName" },
             domProps: { value: _vm.name },
             on: {
+              blur: _vm.updateDayName,
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -33350,7 +33361,7 @@ var render = function() {
             { staticClass: "form-label", attrs: { for: "dayName" } },
             [
               _c(
-                "button",
+                "a",
                 {
                   staticClass: "btn btn-sm text-red",
                   on: {
@@ -33629,12 +33640,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         removeDay: function removeDay(dayId) {
-            console.log("came here");
-            self = this;
-            axios.delete('/days/' + dayId).then(function (response) {
-                self.days = self.days.filter(function (day) {
-                    return day.id !== dayId;
-                });
+            this.days = this.days.filter(function (day) {
+                return day.id !== dayId;
             });
         },
         fetchDays: function fetchDays() {
