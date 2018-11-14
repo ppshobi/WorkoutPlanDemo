@@ -33259,11 +33259,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['exercises'],
+    props: ['exercises', 'dayCount'],
 
     data: function data() {
         return {
-            name: 'Day 1',
+            name: 'Day ' + this.dayCount,
             editing: true,
             allExercises: [],
             dayExercises: []

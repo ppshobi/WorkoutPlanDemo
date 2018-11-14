@@ -58,11 +58,11 @@
 
 <script>
     export default {
-        props : ['exercises'],
+        props : ['exercises', 'dayCount'],
 
         data: function() {
             return {
-                name : 'Day 1',
+                name : 'Day '+ this.dayCount,
                 editing: true,
                 allExercises: [],
                 dayExercises: []
