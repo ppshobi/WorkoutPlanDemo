@@ -12,4 +12,9 @@ class Plan extends Model
     {
         return $this->hasMany(Day::class);
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }
