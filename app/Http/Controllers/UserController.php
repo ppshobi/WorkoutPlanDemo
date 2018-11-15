@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Exercise;
 use App\Plan;
 use App\User;
 use Illuminate\Http\Request;
@@ -67,10 +66,6 @@ class UserController extends Controller
             'user' => $user,
             'plans' => Plan::all(),
         ]);
-    }
-    public function show(User $user)
-    {
-
     }
 
     public function destroy(Request $request, $user)
