@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\PlanUpdated;
 use App\Plan;
 use App\User;
+use App\Mail\PlanChanged;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -55,7 +55,7 @@ class UserController extends Controller
         $user = User::where('id', $userId)->first();
 
         if ($user->plan_id != $request->plan_id) {
-            Mail::to($user)->send(new PlanUpdated($user));
+            Mail::to($user)->send(new PlanChanged($user));
         }
 
         $user->update([
