@@ -25,7 +25,7 @@
                             </div>
                             <div class="col">{{ $user->plan ? $user->plan->name : "Not enrolled in any plan" }}</div>
                             <div class="col-auto">
-                                <a href="{{ "/user/$user->id" }}" class="btn btn-sm btn-secondary">Assign a plan</a>
+                                <a href="{{ "/users/$user->id/edit" }}" class="btn btn-sm btn-secondary">Assign a plan</a>
                             </div>
                             <div class="col-auto">
                                 <div class="item-action dropdown">
@@ -47,7 +47,7 @@
             {{ $users->links() }}
         </div>
         <div class="card-footer">
-            <a class="btn btn-primary" href="/user/create">Create a user</a>
+            <a class="btn btn-primary" href="/users/create">Create a user</a>
         </div>
     </div>
 @endsection

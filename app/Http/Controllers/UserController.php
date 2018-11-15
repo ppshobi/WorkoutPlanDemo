@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         return view('user.index')->with([
-           'users' =>  User::paginate(10),
+           'users' =>  User::orderBy('id', 'desc')->paginate(10),
         ]);
     }
 
@@ -29,7 +29,7 @@ class UserController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name'  => 'required',
-            'email'      => 'required|email',
+            'email'      => 'required|email|unique:users',
         ]);
 
         User::create([
@@ -42,6 +42,31 @@ class UserController extends Controller
 
         session()->flash('alert-success', 'User Created Successfully');
         return redirect('/users');
+    }
+
+    public function update(Request $request, $userId)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'last_name'  => 'required',
+        ]);
+
+        User::where('id', $userId)->update([
+            'first_name' => $request->first_name,
+            'last_name'  => $request->last_name,
+            'plan_id'    => $request->plan_id,
+        ]);
+
+        session()->flash('alert-success', 'User Updated Successfully');
+        return redirect('/users');
+    }
+
+    public function edit(User $user)
+    {
+        return view('user.edit')->with([
+            'user' => $user,
+            'plans' => Plan::all(),
+        ]);
     }
     public function show(User $user)
     {

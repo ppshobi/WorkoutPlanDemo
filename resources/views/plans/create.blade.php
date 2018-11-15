@@ -46,8 +46,8 @@
                     <button class="btn btn-primary w-100" @click.prevent="addDay">Add a Day</button>
                 </div>
             </div>
-            <div class="card-footer">
-                {{--<button class="btn btn-primary" type="submit">Go Back</button>--}}
+            <div class="card-footer text-right">
+                <a class="btn btn-primary" href="/plans">Save & Go Back</a>
             </div>
         </div>
         </plan>
