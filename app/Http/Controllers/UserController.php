@@ -72,4 +72,11 @@ class UserController extends Controller
     {
 
     }
+
+    public function destroy(Request $request, $user)
+    {
+        User::destroy([$user]);
+        session()->flash('alert-success', 'User Deleted Successfully');
+        return redirect()->back();
+    }
 }

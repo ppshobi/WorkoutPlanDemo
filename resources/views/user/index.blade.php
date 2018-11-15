@@ -25,14 +25,18 @@
                             </div>
                             <div class="col">{{ $user->plan ? $user->plan->name : "Not enrolled in any plan" }}</div>
                             <div class="col-auto">
-                                <a href="{{ "/users/$user->id/edit" }}" class="btn btn-sm btn-secondary">Assign a plan</a>
+                                <a href="{{ "/users/$user->id/edit" }}" class="btn btn-sm btn-primary">Assign a plan</a>
                             </div>
                             <div class="col-auto">
                                 <div class="item-action dropdown">
                                     <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-edit"></i> Edit User </a>
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-trash"></i> Delete User </a>
+                                        <a href="{{ "/users/$user->id/edit" }}" class="dropdown-item"><i class="dropdown-icon fe fe-edit"></i> Edit User </a>
+                                        <form action="{{ "/users/$user->id" }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="dropdown-item"><i class="dropdown-icon fe fe-trash"></i>Delete User</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
