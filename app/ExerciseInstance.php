@@ -15,6 +15,11 @@ class ExerciseInstance extends Model
         return $this->belongsTo(Exercise::class);
     }
 
+    public function day()
+    {
+        return $this->belongsTo(Day::class);
+    }
+
     public function getNameAttribute()
     {
         return $this->exercise->name;

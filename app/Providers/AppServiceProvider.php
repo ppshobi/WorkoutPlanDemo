@@ -2,11 +2,15 @@
 
 namespace App\Providers;
 
-use App\Observers\PlanObserver;
+use App\Day;
 use App\Plan;
 use App\User;
+use App\ExerciseInstance;
+use App\Observers\DayObserver;
+use App\Observers\PlanObserver;
 use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
+use App\Observers\ExerciseInstanceObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         Plan::observe(PlanObserver::class);
+        Day::observe(DayObserver::class);
+        ExerciseInstance::observe(ExerciseInstanceObserver::class);
     }
 
     /**
