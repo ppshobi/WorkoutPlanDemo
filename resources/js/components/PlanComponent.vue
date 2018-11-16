@@ -29,8 +29,10 @@
             },
 
             removeDay(dayId){
-                this.days = this.days.filter(function(day) {
-                    return day.id !== dayId;
+                let self = this;
+                axios.delete('/days/'+dayId).then((response)=>{
+                    self.days = [];
+                    self.fetchDays();
                 });
             },
 

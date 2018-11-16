@@ -4,7 +4,7 @@
             <div class="card card-default">
                 <div class="card-header">
                     <input type="text" id="dayName" @blur="updateDayName" v-model="name" class="form-control" />
-                    <label class="form-label" for="dayName"> <a class="btn btn-sm text-red" @click.prevent="deleteDay()"><i class="fe fe-trash"></i> Delete</a></label>
+                    <label class="form-label" for="dayName"> <a class="btn btn-sm text-red" @click.prevent="$emit('remove-day', day.id)"><i class="fe fe-trash"></i> Delete</a></label>
                 </div>
                 <div class="card-body o-auto">
                     <ul class="list-unstyled list-separated">
@@ -67,7 +67,6 @@
         data: function() {
             return {
                 name : this.day.name,
-                dayId: this.day.id,
                 editing: true,
                 allExercises: [],
                 dayExercises: []
@@ -85,7 +84,7 @@
                 $(event.target).parents().eq(2).siblings().closest('.modal').modal()
             },
             updateDayName(){
-                axios.patch('/days/'+this.dayId, {name:this.name}).then((response) => {
+                axios.patch('/days/'+this.day.id, {name:this.name}).then((response) => {
                     console.log("Name Updated Successfully");
                 });
             },
@@ -113,10 +112,10 @@
                         return {
                             id: ex.exercise_id,
                             duration:ex.duration,
-                            day_id: self.dayId,
+                            day_id: self.day.id,
                         }
                     }),
-                    dayId: self.dayId,
+                    dayId: self.day.id,
                 }).then((response) => {
                     console.log(response.body);
                 });
@@ -124,9 +123,10 @@
 
             deleteDay(){
                 let self=this;
-                axios.delete('/days/'+this.dayId).then((response)=>{
-                    this.$emit('remove-day', self.dayId)
-                });
+                // axios.delete('/days/'+this.dayId).then((response)=>{
+                //     this.$emit('remove-day', self.dayId)
+                // });
+                this.$emit('remove-day', self.day.id)
             },
 
             remove(id) {
@@ -134,7 +134,7 @@
                     return ex.exercise_id !== parseInt(id);
                 });
 
-                axios.delete(`/exercise-instance/${this.dayId}/${id}`)
+                axios.delete(`/exercise-instance/${this.day.id}/${id}`)
                     .then((response)=>{
                         console.log(response.data);
                     });

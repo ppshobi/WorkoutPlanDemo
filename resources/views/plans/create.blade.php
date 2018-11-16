@@ -40,8 +40,8 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div v-for="day in days">
-                        <day :day="day" @remove-day="removeDay"></day>
+                    <div v-for="day in this.days">
+                        <day :day="day" :day-id="day.id" @remove-day="removeDay"></day>
                     </div>
                     <button class="btn btn-primary w-100" @click.prevent="addDay">Add a Day</button>
                 </div>
