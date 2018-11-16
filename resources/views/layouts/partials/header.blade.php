@@ -49,10 +49,10 @@
             <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                     <li class="nav-item">
-                        <a href="/plans" class="nav-link active"><i class="fe fe-clipboard "></i> Plan Overview</a>
+                        <a href="/plans" class="nav-link @if(request()->is('plans') || request()->is('plans/*')) active @endif"><i class="fe fe-clipboard "></i> Plan Overview</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/users" class="nav-link"><i class="fe fe-user"></i> User Management</a>
+                        <a href="/users" class="nav-link @if(request()->is('users') || request()->is('users/*')) active @endif"><i class="fe fe-user"></i> User Management</a>
                     </li>
                 </ul>
             </div>
