@@ -36,7 +36,7 @@ class PlanController extends Controller
 
     public function update(Request $request, $planId)
     {
-        Plan::where('id', $planId)->update([
+        Plan::find($planId)->update([
             'name'        => $request->name,
             'description' => $request->description ?? '',
             'difficulty'  => $request->difficulty,

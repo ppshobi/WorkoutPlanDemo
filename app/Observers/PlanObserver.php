@@ -2,17 +2,17 @@
 
 namespace App\Observers;
 
-use App\Mail\PlanAssigned;
+use App\Plan;
 use App\Mail\PlanUpdated;
-use App\User;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class PlanObserver
 {
     /**
-     * Handle the user "created" event.
+     * Handle the plan "updated" event.
      *
-     * @param  \App\User  $user
+     * @param  \App\Plan  $plan
      * @return void
      */
     public function updated(Plan $plan)
