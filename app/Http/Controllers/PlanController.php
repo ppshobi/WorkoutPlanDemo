@@ -42,4 +42,13 @@ class PlanController extends Controller
             'difficulty'  => $request->difficulty,
         ]);
     }
+
+    public function destroy(Request $request, $plan)
+    {
+        $plan = Plan::find($plan);
+        $plan->days()->delete();
+        $plan->delete();
+        session()->flash('alert-success', 'Plan Deleted Successfully');
+        return redirect()->back();
+    }
 }

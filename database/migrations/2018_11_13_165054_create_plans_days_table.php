@@ -20,7 +20,7 @@ class CreatePlansDaysTable extends Migration
             $table->integer('order');
             $table->timestamps();
 
-            $table->foreign('plan_id')->references('id')->on('plans');
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
         });
     }
 
