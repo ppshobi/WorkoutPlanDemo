@@ -2,15 +2,16 @@
 
 namespace App\Observers;
 
+use App\Day;
 use App\Mail\PlanUpdated;
 use Illuminate\Support\Facades\Mail;
 
 class DayObserver
 {
     /**
-     * Handle the user "created" event.
+     * Handle the day "updated" event.
      *
-     * @param  \App\User  $user
+     * @param  \App\Day  $day
      * @return void
      */
     public function updated(Day $day)

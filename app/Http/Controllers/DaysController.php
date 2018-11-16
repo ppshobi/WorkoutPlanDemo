@@ -43,7 +43,7 @@ class DaysController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Day::where('id', $id)->update(['name' => $request->name]);
+        Day::find($id)->update(['name' => $request->name]);
         return response('Success', 200);
     }
 
