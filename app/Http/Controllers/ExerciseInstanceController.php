@@ -34,6 +34,8 @@ class ExerciseInstanceController extends Controller
                 'duration' => $exercise['duration'],
             ]);
         }
+
+        return ExerciseInstance::where('day_id', $request->dayId)->get();
     }
 
     /**

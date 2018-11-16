@@ -100,7 +100,7 @@
                     temporaryExercises.push(result);
                 });
 
-                this.dayExercises = _.unionBy(temporaryExercises, this.dayExercises, 'id');
+                this.dayExercises = _.unionBy(temporaryExercises, this.dayExercises, 'exercise_id');
 
                 this.persistExerciseInstance();
             },
@@ -111,11 +111,12 @@
                 axios.post('/exercise-instance',{
                     exercises: this.dayExercises.map((ex) => {
                         return {
-                            id: ex.id,
+                            id: ex.exercise_id,
                             duration:ex.duration,
                             day_id: self.dayId,
                         }
                     }),
+                    dayId: self.dayId,
                 }).then((response) => {
                     console.log(response.body);
                 });
@@ -141,7 +142,10 @@
 
             fetchExercises() {
                 axios.get('/exercise').then((response)=>{
-                   this.allExercises = response.data;
+                   this.allExercises = response.data.map((ex)=>{
+                       ex.exercise_id = ex.id;
+                       return ex;
+                   });
                 });
             }
         },
