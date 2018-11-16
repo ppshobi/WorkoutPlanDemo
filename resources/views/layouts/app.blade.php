@@ -40,6 +40,7 @@
     <script src="/plugins/maps-google/plugin.js"></script>
     <!-- Input Mask Plugin -->
     <script src="/plugins/input-mask/plugin.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
 </head>
 <body class="">
 <div class="page">

@@ -74,7 +74,6 @@
         },
         mounted() {
             this.dayExercises = this.day.exercises;
-            console.log('Day Component mounted.');
             this.fetchExercises();
         },
 
@@ -85,7 +84,7 @@
             },
             updateDayName(){
                 axios.patch('/days/'+this.day.id, {name:this.name}).then((response) => {
-                    console.log("Name Updated Successfully");
+                    toastr.success('Day Name Updated');
                 });
             },
             saveExercises(event){
@@ -96,6 +95,7 @@
                     let result = self.allExercises.find((ex) => {
                         return ex.id === val;
                     });
+
                     temporaryExercises.push(result);
                 });
 
@@ -117,16 +117,8 @@
                     }),
                     dayId: self.day.id,
                 }).then((response) => {
-                    console.log(response.body);
+                    toastr.success("Added Exercises to Day");
                 });
-            },
-
-            deleteDay(){
-                let self=this;
-                // axios.delete('/days/'+this.dayId).then((response)=>{
-                //     this.$emit('remove-day', self.dayId)
-                // });
-                this.$emit('remove-day', self.day.id)
             },
 
             remove(id) {
@@ -136,7 +128,7 @@
 
                 axios.delete(`/exercise-instance/${this.day.id}/${id}`)
                     .then((response)=>{
-                        console.log(response.data);
+                        toastr.warning("Exercise Removed");
                     });
             },
 

@@ -14,7 +14,6 @@
             }
         },
         mounted() {
-            console.log('Add plan Component mounted.');
             this.fetchDays(this.plan.id);
         },
         methods: {
@@ -24,7 +23,7 @@
                     'plan_id': this.plan.id
                 }).then((response)=>{
                     self.days.push(response.data);
-                    console.log("created day");
+                    toastr.success('Created Day');
                 });
             },
 
@@ -33,6 +32,7 @@
                 axios.delete('/days/'+dayId).then((response)=>{
                     self.days = [];
                     self.fetchDays();
+                    toastr.warning("Added Exercises to Day");
                 });
             },
 
@@ -42,7 +42,6 @@
                     }
                 }).then((response)=>{
                     this.days = response.data;
-                    console.log("fetched days");
                 });
             },
 
@@ -52,10 +51,9 @@
                     description: this.description,
                     difficulty: this.difficulty,
                 }).then((response) => {
-                    console.log(response.data)
+                    toastr.success('Day Updated');
                 });
             }
-
         }
     }
 </script>

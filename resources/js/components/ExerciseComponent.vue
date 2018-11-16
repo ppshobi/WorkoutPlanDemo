@@ -27,18 +27,12 @@
             }
         },
         methods: {
-            closeModal(){
-
-            },
         },
 
         mounted() {
             console.log('Exercise Component mounted.')
         },
         methods: {
-            addToDay (){
-                console.log("clicked");
-            }
         }
     }
 </script>
